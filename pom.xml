@@ -42,6 +42,7 @@
     </dependencies>
 
     <!-- Suporte a enviar para usar o Github como repositório do Maven -->
+
     <distributionManagement>
         <repository>
             <id>internal.repo</id>
@@ -66,6 +67,10 @@
                 <artifactId>site-maven-plugin</artifactId>
                 <version>0.9</version>
                 <configuration>
+                    <!-- github repo name -->
+                    <repositoryName>franciscoj2lib</repositoryName>
+                    <!-- github username -->
+                    <repositoryOwner>netinhoteixeira</repositoryOwner>
                     <!-- git commit message -->
                     <message>Maven artifacts for ${project.version}</message>
                     <!-- disable webpage processing -->
@@ -74,13 +79,13 @@
                     <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
                     <!-- remote branch name -->
                     <branch>refs/heads/mvn-repo</branch>
+                    <!-- If you remove this then the old artifact will be removed -->
+                    <!-- and new one will replace. But with the merge tag you can -->
+                    <!-- just release by changing the version -->
+                    <merge>true</merge>
                     <includes>
                         <include>**/*</include>
                     </includes>
-                    <!-- github repo name -->
-                    <repositoryName>franciscoj2lib</repositoryName>
-                    <!-- github username  -->
-                    <repositoryOwner>francisco</repositoryOwner>
                 </configuration>
                 <executions>
                     <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
